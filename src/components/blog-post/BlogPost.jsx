@@ -1,23 +1,31 @@
 import React from 'react';
+import styled from 'styled-components';
 import { withStyles } from '@material-ui/styles';
 import Typography from '@material-ui/core/Typography';
 import Img from 'gatsby-image';
 
-import styles from './style';
+const BodyText = styled(Typography)`
+  blockquote {
+    font-style: italic;
+  }
+`;
+
+const Container = styled.div`
+  padding: 16px 0;
+`;
 
 type Props = {
-  classes: Object,
   data: Object,
 };
 
-const BlogPost = ({ classes, data }: Props) => {
+export const BlogPost = ({ classes, data }: Props) => {
   return (
-    <div className={classes.container}>
+    <Container>
       {data.heroImage ? <Img fluid={data.heroImage.fluid} /> : null}
       <Typography variant='h2' color='textPrimary'>
         {data.title}
       </Typography>
-      <Typography
+      <BodyText
         variant='body1'
         dangerouslySetInnerHTML={{
           __html: data.body.childMarkdownRemark.html,
@@ -27,8 +35,6 @@ const BlogPost = ({ classes, data }: Props) => {
       <Typography variant='body2'>
         {new Date(data?.publishDate).toLocaleDateString('sv-SE')}
       </Typography>
-    </div>
+    </Container>
   );
 };
-
-export default withStyles(styles)(BlogPost);

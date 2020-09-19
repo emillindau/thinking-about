@@ -1,6 +1,5 @@
 import Animated from './animated';
 import Avatar from './avatar';
-import BlogPost from './blog-post';
 import Footer from './footer';
 import Header from './header';
 import Layout from './layout';
@@ -12,7 +11,6 @@ import SEO from './seo';
 export {
   Animated,
   Avatar,
-  BlogPost,
   Footer,
   Header,
   Layout,
